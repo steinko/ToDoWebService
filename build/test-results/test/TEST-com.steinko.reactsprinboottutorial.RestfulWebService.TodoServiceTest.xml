@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-13T09:35:09" hostname="Steins-MacBook-Air.local" time="0.007">
+  <properties/>
+  <testcase name="ShouldExist()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" time="0.001"/>
+  <testcase name="shouldretunTodos()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" time="0.004"/>
+  <system-out><![CDATA[2020-07-13 11:35:09.970  INFO 29549 --- [    Test worker] c.s.r.RestfulWebService.TodoService      : [com.steinko.reactsprinboottutorial.RestfulWebService.Todo@3a1c1a16, com.steinko.reactsprinboottutorial.RestfulWebService.Todo@61be600f]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

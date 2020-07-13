@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.steinko.reactsprinboottutorial.RestfulWebService.TodoControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-13T09:35:05" hostname="Steins-MacBook-Air.local" time="4.674">
+  <properties/>
+  <testcase name="shouldReciveHelloWorld()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoControllerTest" time="4.662"/>
+  <testcase name="shouldExist()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoControllerTest" time="0.004"/>
+  <system-out><![CDATA[2020-07-13 11:35:07.690  INFO 29549 --- [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2020-07-13 11:35:07.696  INFO 29549 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-07-13 11:35:07.697  INFO 29549 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2020-07-13 11:35:07.874  INFO 29549 --- [    Test worker] c.s.r.RestfulWebService.TodoController   : [com.steinko.reactsprinboottutorial.RestfulWebService.Todo@36db83f9, com.steinko.reactsprinboottutorial.RestfulWebService.Todo@5c250946]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
