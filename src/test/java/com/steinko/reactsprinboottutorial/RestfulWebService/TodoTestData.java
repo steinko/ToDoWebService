@@ -24,7 +24,7 @@ public class TodoTestData {
 	   = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 	 Date date;
 		try  {		
-	          String toParse = "01-01-2020 02:30:00";
+	          String toParse = "01-01-2020 12:00:00";
 	          date = df.parse(toParse);
 		 } catch (ParseException ex)
 		{
@@ -36,7 +36,7 @@ public class TodoTestData {
 	 
 	  todos = new ArrayList<Todo>();
 	  todos.add(new Todo(1L, "Stein", "Fix mutter", date, false));
-	  todos.add(new Todo(2L, "Oddmund", "Fix kajak", date, false));
+	  todos.add(new Todo(2L, "Stein", "Fix kajakk", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	   

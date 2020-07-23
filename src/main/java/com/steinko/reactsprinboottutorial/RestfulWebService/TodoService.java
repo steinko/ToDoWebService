@@ -39,7 +39,7 @@ public class TodoService  {
 		 
 		    todos = new ArrayList<Todo>();
 		    todos.add(new Todo(1L, "Stein", "Fix mutter", date, false));
-		    todos.add(new Todo(3L, "Stein", "Fix kajakk", date, false));
+		    todos.add(new Todo(2L, "Stein", "Fix kajakk", date, false));
 		    
 	}
 
