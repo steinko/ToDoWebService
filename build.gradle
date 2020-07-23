@@ -17,8 +17,8 @@ java {
 
 dependencies {
      implementation 'com.epam.reportportal:logger-java-log4j:5.0.2'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE'
-	testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE') 
+     implementation 'org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE'
+	 testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE') 
      testImplementation 'io.rest-assured:spring-mock-mvc:4.1.2'
      testImplementation 'com.epam.reportportal:agent-java-junit5:5.0.0-RC-1'
 }

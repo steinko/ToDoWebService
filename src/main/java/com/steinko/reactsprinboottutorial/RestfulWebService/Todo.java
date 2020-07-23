@@ -10,16 +10,16 @@ public class Todo {
 	private String description;
 	@JsonSerialize(using = CustomDateSerializer.class)
 	@JsonDeserialize(using = CustomDateDeserialize.class)
-	private Date targetData;
-	private boolean isDone;
+	private Date targetDate;
+	private Boolean isDone;
 
 	
-	public Todo(long id, String username, String description, Date targetData, boolean isDone) {
+	public Todo(long id, String username, String description, Date targetDate, Boolean isDone) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.description = description;
-		this.targetData = targetData;
+		this.targetDate = targetDate;
 		this.isDone = isDone;
 	}
 
@@ -54,22 +54,22 @@ public class Todo {
 	}
 
 
-	public Date getTargetData() {
-		return targetData;
+	public Date getTargetDate() {
+		return targetDate;
 	}
 
 
-	public void setTargetData(Date targetData) {
-		this.targetData = targetData;
+	public void setTargetDate(Date targetDate) {
+		this.targetDate = targetDate;
 	}
 
-
-	public boolean isDone() {
+	
+	public Boolean getIsDone() {
 		return isDone;
 	}
 
 
-	public void setDone(boolean isDone) {
+	public void setIsDone(Boolean isDone) {
 		this.isDone = isDone;
 	}
 }
