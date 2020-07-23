@@ -1,5 +1,5 @@
 FROM gcr.io/google-appengine/openjdk
-COPY build/libs/backend.jar ./
+COPY build/libs/todobackend.jar ./
 ENTRYPOINT ["java"]
-CMD ["-jar", "/backend.jar"]
+CMD ["-jar", "/todobackend.jar"]
 EXPOSE 8080
