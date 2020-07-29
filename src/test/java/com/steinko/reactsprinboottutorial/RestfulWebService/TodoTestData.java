@@ -35,8 +35,8 @@ public class TodoTestData {
 		
 	 
 	  todos = new ArrayList<Todo>();
-	  todos.add(new Todo(1L, "Stein", "Fix mutter", date, false));
-	  todos.add(new Todo(2L, "Stein", "Fix kajakk", date, false));
+	  todos.add(new Todo(0, "Stein", "Fix mutter", date, false));
+	  todos.add(new Todo(1, "Stein", "Fix kajakk", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	   
