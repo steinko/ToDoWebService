@@ -4,17 +4,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.text.ParseException;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.text.ParseException;
+
 
 
 @CrossOrigin(origins = "*")
@@ -32,10 +30,21 @@ public class TodoController {
 	private static final Logger logger = LoggerFactory.getLogger(TodoController.class);
 	
 	@GetMapping(value= "{user_name}/todos")
-	public List<Todo> getPerson(@PathVariable("user_name") String userName) {
+	public List<Todo> getTodos(@PathVariable("user_name") String userName) {
 		List<Todo> result;
 				
 			result = service.getTodos(userName);
+		
+		logger.info(result.toString());
+		return result;
+	}
+	
+	@DeleteMapping(value= "{user_name}/todos/{id}")
+	public List<Todo> deleteTodo(@PathVariable("user_name") String userName,@PathVariable("id") String id) {
+	
+		int intId=Integer.parseInt(id);  
+				
+		List<Todo>	result = service.deleteTodo(userName,intId);
 		
 		logger.info(result.toString());
 		return result;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class Todo {
-	private long id;
+	private int id;
 	private String username;
 	private String description;
 	@JsonSerialize(using = CustomDateSerializer.class)
@@ -14,7 +14,7 @@ public class Todo {
 	private Boolean isDone;
 
 	
-	public Todo(long id, String username, String description, Date targetDate, Boolean isDone) {
+	public Todo(int id, String username, String description, Date targetDate, Boolean isDone) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -24,12 +24,12 @@ public class Todo {
 	}
 
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

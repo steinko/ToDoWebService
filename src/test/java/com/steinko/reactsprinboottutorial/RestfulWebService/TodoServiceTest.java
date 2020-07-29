@@ -41,4 +41,13 @@ public class TodoServiceTest {
                 hasProperty("description", is("Fix kjakk"))     
         ));      
 	}
+	
+	@Test
+	void shouldDeleteTodo() {
+		
+		List<Todo>result = service.deleteTodo("stein", 1); 
+		assertThat(result, containsInAnyOrder(
+                hasProperty("description", is("Fix mutter"))    
+        ));      
+	}
 }

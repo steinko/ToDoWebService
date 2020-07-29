@@ -14,10 +14,10 @@ import static org.springframework.http.HttpStatus.OK;
 import static org.mockito.Mockito.when;
 import static org.mockito.Matchers.anyString;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -66,4 +66,47 @@ public class TodoControllerTest {
           .contentType(JSON)
           .body(is(equalTo(todosjson)));
         } 
+	  
+	  @Test
+	    public void shouldDeleteTodo() throws Exception,JsonProcessingException,ParseException {
+		  String url = "/users/Stein/todos/1";
+		  SimpleDateFormat df
+		   = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+		 Date date;
+			try  {		
+		          String toParse = "01-01-2020 12:00:00";
+		          date = df.parse(toParse);
+			 } catch (ParseException ex)
+			{
+				 date = new Date();
+				 logger.info(ex.getMessage());	 
+			}
+		  	
+		  
+		  List<Todo> todos = new ArrayList<Todo>();
+		  todos.add(new Todo(0, "Stein", "Fix mutter", date, false));
+		  ObjectMapper objectMapper = new ObjectMapper();
+		   
+		  String todosjson = "";
+		   try {
+		   
+	         todosjson =   objectMapper.writeValueAsString(todos);
+		   } catch (JsonProcessingException ex)
+		   {
+			   logger.info(ex.getMessage());
+		   }
+		 
+		   
+		   when(service.deleteTodo("Stein",1)).thenReturn(todos);
+		   
+		   given().
+		     standaloneSetup(controller)
+          .when()
+             .delete(url)
+           .then()
+             .log().ifValidationFails()
+             .statusCode(OK.value())
+             .contentType(JSON)
+             .body(is(equalTo(todosjson)));
+      } 
 }
