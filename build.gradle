@@ -7,7 +7,7 @@ repositories {
     mavenCentral()
     jcenter()
     mavenLocal()
-    maven { url "http://dl.bintray.com/epam/reportportal" }
+   // maven { url "http://dl.bintray.com/epam/reportportal" }
 }
 
 java {
@@ -24,9 +24,9 @@ dependencies {
 }
 
 test {
-    testLogging.showStandardStreams = true
+   // testLogging.showStandardStreams = true
     useJUnitPlatform()
-    systemProperty 'junit.jupiter.extensions.autodetection.enabled', true
+   // systemProperty 'junit.jupiter.extensions.autodetection.enabled', true
 }
 
 //sonarqube {
