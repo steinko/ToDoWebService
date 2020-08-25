@@ -35,7 +35,7 @@ public class TodoServiceTest {
 	@Test
 	void shouldretunTodos() {
 		
-		List<Todo>result = service.getTodos("stein"); 
+		List<TodoDto>result = service.getTodos("stein"); 
 		assertThat(result, containsInAnyOrder(
                 hasProperty("description", is("Fix mutter")),
                 hasProperty("description", is("Fix kjakk"))     
@@ -45,7 +45,7 @@ public class TodoServiceTest {
 	@Test
 	void shouldDeleteTodo() {
 		
-		List<Todo>result = service.deleteTodo("stein", 1); 
+		List<TodoDto>result = service.deleteTodo("stein", 1); 
 		assertThat(result, containsInAnyOrder(
                 hasProperty("description", is("Fix mutter"))    
         ));      

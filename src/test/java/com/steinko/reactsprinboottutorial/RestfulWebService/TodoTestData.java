@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class TodoTestData {
-	private List<Todo> todos;
+	private List<TodoDto> todos;
 	private String todosjson;
 	private static final Logger logger = LoggerFactory.getLogger(TodoTestData.class);
 	
@@ -34,9 +34,9 @@ public class TodoTestData {
 		
 		
 	 
-	  todos = new ArrayList<Todo>();
-	  todos.add(new Todo(0, "Stein", "Fix mutter", date, false));
-	  todos.add(new Todo(1, "Stein", "Fix kajakk", date, false));
+	  todos = new ArrayList<TodoDto>();
+	  todos.add(new TodoDto(0, "Stein", "Fix mutter", date, false));
+	  todos.add(new TodoDto(1, "Stein", "Fix kajakk", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	   
@@ -49,7 +49,7 @@ public class TodoTestData {
 	   }
 	  }
 
-	public List<Todo> getTodos() {
+	public List<TodoDto> getTodos() {
 		return todos;
 	}
 

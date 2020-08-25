@@ -1,6 +1,7 @@
 package com.steinko.reactsprinboottutorial.RestfulWebService;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -42,7 +43,7 @@ public class TodoControllerIT {
      void setUp()  {
 	    url =  "http://localhost:" + localServerPort + "/users/stein/todos";;	
      }
- 
+     @Disabled
      @Test
      void shoulReturnPerson()  {
     	   

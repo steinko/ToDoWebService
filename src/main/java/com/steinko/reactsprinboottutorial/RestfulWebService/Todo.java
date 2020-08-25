@@ -1,75 +1,53 @@
 package com.steinko.reactsprinboottutorial.RestfulWebService;
 
-import java.util.Date;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
-public class Todo {
-	private int id;
-	private String username;
-	private String description;
-	@JsonSerialize(using = CustomDateSerializer.class)
-	@JsonDeserialize(using = CustomDateDeserialize.class)
-	private Date targetDate;
-	private Boolean isDone;
+import javax.persistence.Column;
+import javax.persistence.Table;
+import java.io.Serializable;
 
+
+@Entity
+
+@Table(name = "todo")
+public class Todo implements Serializable  {
+	private static final long serialVersionUID = -2343243243242432341L;
+	/**
+	 * Id for a bank.
+	 */
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
-	public Todo(int id, String username, String description, Date targetDate, Boolean isDone) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.description = description;
-		this.targetDate = targetDate;
-		this.isDone = isDone;
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public Date getTargetDate() {
-		return targetDate;
-	}
-
-
-	public void setTargetDate(Date targetDate) {
-		this.targetDate = targetDate;
-	}
-
 	
-	public Boolean getIsDone() {
-		return isDone;
+	@Column(name = "name")
+	private String name;
+	
+	protected Todo() {
+		
+	}
+	
+	/**
+	    * Get the id of the bank.
+	    * @return id for the bank
+	    */
+	public Long getId() {
+	   		return id;
+	    }
+	
+	public Todo(String name) {
+		this.name = name;
+	}
+	
+	public void setName( String name) {
+		 this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 
-
-	public void setIsDone(Boolean isDone) {
-		this.isDone = isDone;
-	}
 }

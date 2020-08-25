@@ -28,7 +28,7 @@ public class TodoTestDataTest {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TodoTestDataTest.class);
 	private TodoTestData testData;
-	private List<Todo> todos;
+	private List<TodoDto> todos;
 	private String todosjson;
 	
 	TodoTestDataTest() throws ParseException, JsonProcessingException  {
@@ -44,9 +44,9 @@ public class TodoTestDataTest {
 			 throw ex;
 		  }
 		
-	   todos = new ArrayList<Todo>();
-	   todos.add(new Todo(1, "Stein", "Fix mutter", date, false));
-	   todos.add(new Todo(2, "Oddmund", "Fix kajak", date, false));
+	   todos = new ArrayList<TodoDto>();
+	   todos.add(new TodoDto(1, "Stein", "Fix mutter", date, false));
+	   todos.add(new TodoDto(2, "Oddmund", "Fix kajak", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	     try {
@@ -68,7 +68,7 @@ public class TodoTestDataTest {
 	@Test
 	void shouldReturnTodos() {
 		
-		List<Todo>result = testData.getTodos(); 
+		List<TodoDto>result = testData.getTodos(); 
 		assertThat(result, containsInAnyOrder(
                 hasProperty("username", is("Stein"))
         ));      

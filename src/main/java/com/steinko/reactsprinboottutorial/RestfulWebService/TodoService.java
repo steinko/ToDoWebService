@@ -25,7 +25,7 @@ public class TodoService  {
 
 	
 
-	public List<Todo> getTodos(String userName) { 
+	public List<TodoDto> getTodos(String userName) { 
 		
 		
 		SimpleDateFormat df
@@ -41,15 +41,15 @@ public class TodoService  {
 			}
 			
 		 
-		    List <Todo> todos = new ArrayList<Todo>();
-		    todos.add( new Todo(0, "Stein", "Fix mutter", date, false));
-		    todos.add( new Todo(1, "Stein", "Fix kajakk", date, false));
+		    List <TodoDto> todos = new ArrayList<TodoDto>();
+		    todos.add( new TodoDto(0, "Stein", "Fix mutter", date, false));
+		    todos.add( new TodoDto(1, "Stein", "Fix kajakk", date, false));
 		
 		logger.info(todos.toString());
 		return todos;
 	}
 
-	public List<Todo> deleteTodo(String string, int id) {
+	public List<TodoDto> deleteTodo(String string, int id) {
 		SimpleDateFormat df
 		   = new SimpleDateFormat("dd-MM-yyyy");
 		   Date date;
@@ -61,8 +61,8 @@ public class TodoService  {
 				 logger.info(ex.getMessage());
 				 date = new Date();
 			}
-		List<Todo> todos = new ArrayList<Todo>();
-	    todos.add( new Todo(0, "Stein", "Fix mutter", date, false));
+		List<TodoDto> todos = new ArrayList<TodoDto>();
+	    todos.add( new TodoDto(0, "Stein", "Fix mutter", date, false));
 		return todos;
 	}
 	

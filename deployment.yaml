@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: todo
+    tier: backend
+    env: dev
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: backend
+        image: steinko/todobackend
+        ports:
+        - containerPort: 8080

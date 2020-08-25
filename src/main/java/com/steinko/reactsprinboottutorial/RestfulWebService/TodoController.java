@@ -30,8 +30,8 @@ public class TodoController {
 	private static final Logger logger = LoggerFactory.getLogger(TodoController.class);
 	
 	@GetMapping(value= "{user_name}/todos")
-	public List<Todo> getTodos(@PathVariable("user_name") String userName) {
-		List<Todo> result;
+	public List<TodoDto> getTodos(@PathVariable("user_name") String userName) {
+		List<TodoDto> result;
 				
 			result = service.getTodos(userName);
 		
@@ -39,12 +39,12 @@ public class TodoController {
 		return result;
 	}
 	
-	@DeleteMapping(value= "{user_name}/todos/{id}")
-	public List<Todo> deleteTodo(@PathVariable("user_name") String userName,@PathVariable("id") String id) {
+	@DeleteMapping(value= "{user_name}/todo/{id}")
+	public List<TodoDto> deleteTodo(@PathVariable("user_name") String userName,@PathVariable("id") String id) {
 	
 		int intId=Integer.parseInt(id);  
 				
-		List<Todo>	result = service.deleteTodo(userName,intId);
+		List<TodoDto>	result = service.deleteTodo(userName,intId);
 		
 		logger.info(result.toString());
 		return result;
