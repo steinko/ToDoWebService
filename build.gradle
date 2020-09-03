@@ -85,7 +85,7 @@ jacocoTestReport {
 sonarqube {
     properties {
 		property "sonar.projectKey", "todobackend"
-		property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
+		property "sonar.jacoco.reportPaths", "build/jacoco/test.exec , build/jacoco/integrationTest.exec "
         property "sonar.sources", "src/main"
        }
     } 
