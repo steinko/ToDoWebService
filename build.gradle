@@ -84,9 +84,6 @@ jacocoTestReport {
 
 sonarqube {
     properties {
-		property "sonar.host.url","https://sonarcloud.io"
-		property "sonar.organization","steinko-github"
-		property "sonar.projectKey", "Cucumbertutorial"
 		property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
         property "sonar.sources", "src/main"
        }

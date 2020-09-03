@@ -14,6 +14,6 @@ script:
   - docker login --username steinko --password RoxyMusic11
   - docker push steinko/todobackend
   - ./gradlew jacocoTestReport
-  - ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=$SONAR_PROJECT_KEY
+  - ./gradlew sonarqube  -Dsonar.projectKey=$SONAR_PROJECT_KEY
 
 
