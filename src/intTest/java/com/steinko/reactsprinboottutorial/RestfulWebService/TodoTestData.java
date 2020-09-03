@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.steinko.reactsprinboottutorial.DateFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,11 +19,12 @@ public class TodoTestData {
 	private String todosjson;
 	private static final Logger logger = LoggerFactory.getLogger(TodoTestData.class);
 	
-	public TodoTestData ()  {
-		 Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
-	  todos = new ArrayList<TodoDto>();
-	  todos.add(new TodoDto(0L, "Stein", "Fix mutter", date, false));
-	  todos.add(new TodoDto(1L, "Stein", "Fix kajakk", date, false));
+	TodoTestData () {
+	
+	   Date date = DateFactory.generetDate("01-01-2020");
+	   todos = new ArrayList<TodoDto>();
+	   todos.add(new TodoDto(0L, "Stein", "Fix mutter", date, false));
+	   todos.add(new TodoDto(1L, "Stein", "Fix kajakk", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	   

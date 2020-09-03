@@ -15,8 +15,9 @@ import static org.hamcrest.CoreMatchers.is;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import com.steinko.reactsprinboottutorial.DateFactory;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,22 +32,13 @@ public class TodoTestDataTest {
 	private List<TodoDto> todos;
 	private String todosjson;
 	
-	TodoTestDataTest() throws ParseException, JsonProcessingException  {
+	TodoTestDataTest() throws  JsonProcessingException  {
 	   testData = new TodoTestData();
-	   SimpleDateFormat df  = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-	   Date date;
-		  try  {		
-	          String toParse = "01-01-2020 02:30:00";
-	          date = df.parse(toParse);
-		  } catch (ParseException ex)
-		  { 
-			 logger.info(ex.getMessage());
-			 throw ex;
-		  }
+	   Date date = DateFactory.generetDate("01-10-2000");
 		
 	   todos = new ArrayList<TodoDto>();
-	   todos.add(new TodoDto(1, "Stein", "Fix mutter", date, false));
-	   todos.add(new TodoDto(2, "Oddmund", "Fix kajak", date, false));
+	   todos.add(new TodoDto(1L, "Stein", "Fix mutter", date, false));
+	   todos.add(new TodoDto(2L, "Oddmund", "Fix kajak", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	     try {

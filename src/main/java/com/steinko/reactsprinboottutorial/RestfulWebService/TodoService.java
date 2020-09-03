@@ -6,7 +6,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validation;
+import javax.validation.Validator;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,52 +27,50 @@ public class TodoService  {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TodoService.class);
 	
+    @Autowired
+	private TodoRepository repository;
 	
-	public TodoService() {
-	  
+	
+	
+
+	public List<TodoDto> getTodos(String name) { 
+		
+		 List<Todo> todos = repository.findByName(name);
+		 TodoConverter converter = new TodoConverter(); 
+		 List<TodoDto> dtos =  converter.convertToDtos(todos);
+		 return dtos;
 	}
 
-	
-
-	public List<TodoDto> getTodos(String userName) { 
+	public void deleteTodo(String name, Long id) {
 		
+		repository.deleteById(id);
 		
-		SimpleDateFormat df
-		   = new SimpleDateFormat("dd-MM-yyyy");
-		   Date date;
-			try  {		
-		          String toParse = "01-01-2020";
-		          date = df.parse(toParse);
-			 } catch (ParseException ex)
-			{
-				 logger.info(ex.getMessage());
-				 date = new Date();
-			}
-			
-		 
-		    List <TodoDto> todos = new ArrayList<TodoDto>();
-		    todos.add( new TodoDto(0, "Stein", "Fix mutter", date, false));
-		    todos.add( new TodoDto(1, "Stein", "Fix kajakk", date, false));
-		
-		logger.info(todos.toString());
-		return todos;
 	}
 
-	public List<TodoDto> deleteTodo(String string, int id) {
-		SimpleDateFormat df
-		   = new SimpleDateFormat("dd-MM-yyyy");
-		   Date date;
-			try  {		
-		          String toParse = "01-01-2020";
-		          date = df.parse(toParse);
-			 } catch (ParseException ex)
-			{
-				 logger.info(ex.getMessage());
-				 date = new Date();
-			}
-		List<TodoDto> todos = new ArrayList<TodoDto>();
-	    todos.add( new TodoDto(0, "Stein", "Fix mutter", date, false));
-		return todos;
+
+
+	public void createTodo(TodoDto dto) {
+		TodoConverter converter = new TodoConverter();
+		Todo todo = converter.convertToEntity(dto);
+		validateEntity(todo);
+		repository.save(todo);
+	}
+	
+	
+	private void validateEntity(Todo todo) {
+		
+		List<String> errorMessage = new ArrayList<>();
+		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+		Set<ConstraintViolation<Todo>> constraintViolations = validator.validate(todo);
+
+		for (ConstraintViolation<Todo> constraintViolation : constraintViolations) {
+			errorMessage.add(constraintViolation.getMessage());
+		}
+
+		if (errorMessage.size() > 0) {
+			throw new ConstraintViolationException(constraintViolations);
+		}
+
 	}
 	
 

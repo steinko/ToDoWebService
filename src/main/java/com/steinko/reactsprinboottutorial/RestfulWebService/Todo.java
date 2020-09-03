@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Entity
@@ -26,9 +27,17 @@ public class Todo implements Serializable  {
 	@Column(name = "name")
 	private String name;
 	
+	private String description;
+	
+	private Date targetDate;
+	
+	private Boolean isDone;
+	
 	protected Todo() {
 		
 	}
+	
+	
 	
 	/**
 	    * Get the id of the bank.
@@ -42,12 +51,63 @@ public class Todo implements Serializable  {
 		this.name = name;
 	}
 	
+	public Todo(String name, String description, Date targetDate, boolean isDone) {
+		this.name = name;
+		this.description = description;
+		this.targetDate = targetDate;
+		this.isDone = isDone;
+	}
+
+
+
 	public void setName( String name) {
 		 this.name = name;
 	}
 	
 	public String getName() {
 		return this.name;
+	}
+
+
+
+	public String getDescription() {
+		return this.description;
+	}
+
+
+
+	public Date getTargetDate() {
+		return this.targetDate;
+	}
+
+
+
+	public Boolean getIsDone() {
+		return this.isDone;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public void setTargetDate(Date targetDate) {
+		this.targetDate = targetDate;
+	}
+
+
+
+	public void setIsDone(Boolean isDone) {
+		this.isDone = isDone;
 	}
 
 }
