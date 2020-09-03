@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestDataTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-13T09:35:05" hostname="Steins-MacBook-Air.local" time="0.095">
-  <properties/>
-  <testcase name="shouldExists()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestDataTest" time="0.009"/>
-  <testcase name="shouldReturnTodos()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestDataTest" time="0.047"/>
-  <testcase name="shouldReturnTodosJson()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestDataTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
