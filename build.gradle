@@ -1,12 +1,13 @@
 plugins { 
 	          id 'org.springframework.boot' version '2.3.3.RELEASE'
 			  id "io.spring.dependency-management" version "1.0.10.RELEASE"
-			  id 'jacoco'
 			  id "org.sonarqube" version "3.0"
+			  
                  
 	  }
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'jacoco'
 
 repositories {
     mavenCentral()
@@ -26,7 +27,7 @@ sourceSets {
 
 configurations {
 	intTestImplementation.extendsFrom implementation
-		intTestCompile.extendsFrom testCompile
+	intTestCompile.extendsFrom testCompile
 	intTestRuntimeOnly.extendsFrom runtimeOnly
 }
 
@@ -56,10 +57,8 @@ dependencies {
 }
 
 test {
-   // testLogging.showStandardStreams = true
     useJUnitPlatform()
-	finalizedBy jacocoTestReport
-   // systemProperty 'junit.jupiter.extensions.autodetection.enabled', true
+	finalizedBy jacocoTestReport 
 }
 
 
@@ -70,26 +69,21 @@ task integrationTest(type: Test) {
 	testClassesDirs = sourceSets.intTest.output.classesDirs
 	classpath = sourceSets.intTest.runtimeClasspath
 	shouldRunAfter test
+	finalizedBy jacocoTestReport
 }
 
-jacocoTestReport {
-	dependsOn integrationTest
-	dependsOn test 
-
-    reports {
-	   xml.enabled = true
-	   html.enabled = true
-    }
-}
 
 sonarqube {
     properties {
 		property "sonar.projectKey", "todobackend"
-		property "sonar.jacoco.reportPaths", "build/jacoco/test.exec , build/jacoco/integrationTest.exec "
         property "sonar.sources", "src/main"
        }
     } 
-
-
+	
+jacocoTestReport {
+		reports {
+			xml.enabled true
+		}
+	}
 
 

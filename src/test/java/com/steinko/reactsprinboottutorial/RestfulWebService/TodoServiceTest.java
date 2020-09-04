@@ -35,7 +35,7 @@ public class TodoServiceTest {
 		assertNotNull (service);
 	}
 	
-	@Disabled
+
 	@Test
 	void shouldretunTodos() {
 		
@@ -46,12 +46,9 @@ public class TodoServiceTest {
 		given(repository.findByName("stein"))
 		  .willReturn(todos);
 	 	
-		Iterable<TodoDto>result = service.getTodos("stein"); 
-		List<TodoDto> expected = new ArrayList<TodoDto>();
-		expected.add(new TodoDto(1L,"Stein", "Fix Mutter", date, true));
-		expected.add(new TodoDto(2L,"Stein", "Fix Mutter", date, false));
-		Iterable<TodoDto> iterable= expected;
-		assertIterableEquals​(iterable,result);     
+		Iterable<Todo>result = service.getTodos("stein"); 
+		Iterable<Todo> expected = todos;
+		assertIterableEquals​(expected,result);     
 	}
 	
 	@Test
@@ -62,7 +59,7 @@ public class TodoServiceTest {
 	@Test
 	void shoulCreateTodo() {
 		Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
-		TodoDto  todo = new TodoDto(1L,"Stein","Fix Kjakk", date,false);
+		Todo todo = new Todo("Stein","Fix Kjakk", date,false);
 		service.createTodo(todo);
 		
 	}

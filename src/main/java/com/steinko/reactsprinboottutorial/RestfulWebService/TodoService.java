@@ -31,27 +31,20 @@ public class TodoService  {
 	private TodoRepository repository;
 	
 	
+	public List<Todo> getTodos(String name) { 
 	
-
-	public List<TodoDto> getTodos(String name) { 
-		
-		 List<Todo> todos = repository.findByName(name);
-		 TodoConverter converter = new TodoConverter(); 
-		 List<TodoDto> dtos =  converter.convertToDtos(todos);
-		 return dtos;
+		 return repository.findByName(name);	
 	}
+	
 
 	public void deleteTodo(String name, Long id) {
 		
 		repository.deleteById(id);
-		
 	}
 
 
-
-	public void createTodo(TodoDto dto) {
-		TodoConverter converter = new TodoConverter();
-		Todo todo = converter.convertToEntity(dto);
+	public void createTodo(Todo todo) {
+		
 		validateEntity(todo);
 		repository.save(todo);
 	}

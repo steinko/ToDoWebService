@@ -33,30 +33,24 @@ public class TodoController {
 	
 	
 	@GetMapping(value= "{user_name}/todos")
-	public List<TodoDto> getTodos(@PathVariable("user_name") String userName) {
-		
-		List<TodoDto> result;		
-		result = service.getTodos(userName);
-		return result;
-		
+	public List<Todo> getTodos(@PathVariable("user_name") String userName) {
+			
+		return service.getTodos(userName);	
 	}
 	
 	
 	@DeleteMapping(value= "{user_name}/todo/{id}")
-	public List<TodoDto> deleteTodo(@PathVariable("user_name") String userName,@PathVariable("id") String id) {
+	public  void deleteTodo(@PathVariable("user_name") String userName,@PathVariable("id") String id) {
 	
 		Long longId=Long.parseLong(id);;  
-		service.deleteTodo(userName,longId);
-		List<TodoDto> result = null;
-		return result;
-		
+	    service.deleteTodo(userName,longId);
 	}
 	
 	
 	@PostMapping(value = "{user_name}/todo")
-	public void createTodo(@PathVariable("user_name") String userName,@RequestBody TodoDto dto){
+	public void createTodo(@PathVariable("user_name") String userName,@RequestBody Todo todo){
 		
-		service.createTodo(dto);
+		service.createTodo(todo);
 	}
 			               
 }

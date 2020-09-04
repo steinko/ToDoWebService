@@ -40,6 +40,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.boot.test.util.TestPropertyValues;
 
+import com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestData;
+
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(initializers = {TodoControllerIT.Initializer.class})
@@ -96,15 +98,15 @@ public class TodoControllerIT {
 	    	  	
 		    logger.info("Before Get Todos");
 		    testData = new TodoTestData();
-			List<TodoDto> dtos = testData.getTodos();
+			List<Todo> todos = testData.getTodos();
 	   	    String createUrl =  "http://localhost:" + localServerPort + "/user/stein/todo";	
 	   	 
-	   	     for (TodoDto dto : dtos) {
+	   	     for (Todo todo : todos) {
 	   	 
 	   	        given().
 	              contentType("application/json").
 	              webAppContextSetup(webApplicationContext).
-	              body(dto)
+	              body(todo)
 	           .when()
 	             .post(createUrl)
 	           .then()
@@ -121,7 +123,7 @@ public class TodoControllerIT {
 	           .log().ifValidationFails()
 	           .statusCode(OK.value())
 	           .contentType("application/json")
-	           .body(is(equalTo(dtos)));
+	           .body(is(equalTo(todos)));
 	         logger.info("After Get Todos");
 	     }
 	 
@@ -131,13 +133,13 @@ public class TodoControllerIT {
      public void shouldCreateTodo()  {
     	 
     	 Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
-		 TodoDto dto = new TodoDto(1L,"Stein","Fix kjakk",date,false);
+		 Todo todo = new Todo("Stein","Fix kjakk",date,false);
     	 String creatUrl =  "http://localhost:" + localServerPort + "/user/stein/todo";;	
     	 
     	 given().
           contentType("application/json").
           webAppContextSetup(webApplicationContext).
-          body(dto)
+          body(todo)
         .when()
            .post(creatUrl)
         .then()
@@ -151,13 +153,13 @@ public class TodoControllerIT {
      public void shouldDeleteTodo() {
     	 
     	 Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
-		 TodoDto dto = new TodoDto(1L,"Stein","Fix kjakk",date,false);
+		 Todo todo = new Todo("Stein","Fix kjakk",date,false);
     	 String creatUrl =  "http://localhost:" + localServerPort + "/user/stein/todo";;	
    	 
     	 given().
           contentType("application/json").
           webAppContextSetup(webApplicationContext).
-          body(dto)
+          body(todo)
         .when()
            .post(creatUrl)
         .then()

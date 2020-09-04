@@ -50,12 +50,13 @@ public class TodoControllerTest {
 	  
 	  
 	  @Test
-	    public void shouldReciveHelloWorld() throws Exception,JsonProcessingException,ParseException {
+	    public void shouldReciveTodos()  throws JsonProcessingException {
 		  String url = "/user/stein/todos";
 		  	
 		  TodoTestData testData = new TodoTestData();
-		  List<TodoDto> todos = testData.getTodos();
-		  String todosjson = testData.getTodosJson();
+		  List<Todo> todos = testData.getTodos();
+		  ObjectMapper mapper = new ObjectMapper();
+		  String jsonTodos = mapper.writeValueAsString(todos);
 		   
 		   when(service.getTodos(anyString())).thenReturn(todos);
 		   
@@ -67,30 +68,16 @@ public class TodoControllerTest {
           .log().ifValidationFails()
           .statusCode(OK.value())
           .contentType(JSON)
-          .body(is(equalTo(todosjson)));
+          .body(is(equalTo(jsonTodos)));
         } 
 	  
 	  @Test
 	 
-	    public void shouldDeleteTodo() throws Exception,JsonProcessingException,ParseException {
-		  String url = "/user/Stein/todo/1";
-		  Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
-		  	
+	    public void shouldDeleteTodo()  {
 		  
-		  List<TodoDto> todos = new ArrayList<TodoDto>();
-		  todos.add(new TodoDto(0L, "Stein", "Fix mutter", date, false));
-		  ObjectMapper objectMapper = new ObjectMapper();
-		   
-		  String todosjson = "";
-		   try {
-		   
-	         todosjson =   objectMapper.writeValueAsString(todos);
-		   } catch (JsonProcessingException ex)
-		   {
-			   logger.info(ex.getMessage());
-		   }
 		 
-		   
+		  String url = "/user/Stein/todo/1";
+		  
 		   given().
 		     standaloneSetup(controller)
           .when()
@@ -102,17 +89,15 @@ public class TodoControllerTest {
       } 
 	  
 	  @Test 
-	  void shouldCreateTodo() throws JsonProcessingException  {
+	  void shouldCreateTodo()  {
+		  
 		  Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
-			
-		  TodoDto todo = new TodoDto(1L,"Stein","Fix kjakk",date,false);
-		  ObjectMapper objectMapper = new ObjectMapper();
-	        String todosjson =   objectMapper.writeValueAsString(todo);     
-	        
+		  Todo todo = new Todo("Stein","Fix kjakk",date,false);
+		         
 		  given().
 		    standaloneSetup(controller).
 		    contentType(JSON).
-		    body(todosjson).
+		    body(todo).
 	      when().
 	         post("/user/Stein/todo").
 	      then().
