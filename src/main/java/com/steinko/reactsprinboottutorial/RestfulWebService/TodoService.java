@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -23,12 +23,15 @@ import org.slf4j.LoggerFactory;
 
 
 @Service
+@Transactional
 public class TodoService  {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TodoService.class);
 	
     @Autowired
 	private TodoRepository repository;
+    
+    
 	
 	
 	public List<Todo> getTodos(String name) { 

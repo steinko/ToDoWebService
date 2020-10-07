@@ -2,15 +2,13 @@ package com.steinko.reactsprinboottutorial;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
+import co.elastic.apm.attach.ElasticApmAttacher;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.*")
-@EntityScan("com.steinko.reactsprinboottutorial.RestfulWebService")
 public class WebService {
 
 	public static void main(String[] args) {
+		ElasticApmAttacher.attach();
 		SpringApplication.run(WebService.class, args);
 	}
 

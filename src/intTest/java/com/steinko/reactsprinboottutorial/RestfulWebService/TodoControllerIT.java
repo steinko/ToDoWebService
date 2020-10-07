@@ -1,11 +1,20 @@
 package com.steinko.reactsprinboottutorial.RestfulWebService;
 
-import org.junit.Test;
-import org.junit.Ignore;
-import org.junit.Before;
-import org.junit.After;
+import static org.springframework.test.context.support.TestPropertySourceUtils.addInlinedPropertiesToEnvironment;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
 import org.springframework.boot.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,13 +22,8 @@ import static org.springframework.http.HttpStatus.OK;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.web.context.WebApplicationContext;
 import com.steinko.reactsprinboottutorial.DateFactory;
-import org.springframework.test.context.DynamicPropertySource;
-import org.springframework.test.context.DynamicPropertyRegistry;
 
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -34,41 +38,19 @@ import org.junit.ClassRule;
 
 
 import org.testcontainers.containers.PostgreSQLContainer;
-
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.boot.test.util.TestPropertyValues;
-
 import com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestData;
 
+import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
-@ContextConfiguration(initializers = {TodoControllerIT.Initializer.class})
+@ExtendWith(SpringExtension.class)
+@Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 
-public class TodoControllerIT {
+public class TodoControllerIT extends AbstractContainerBaseTest{
 	 private static final Logger logger = LoggerFactory.getLogger(TodoControllerIT.class);
 	 
-	 
-	 @ClassRule
-	    public static  PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer("postgres:latest")
-	        .withDatabaseName("postgres")
-	        .withUsername("postgres")
-	        .withPassword("root");
-	 
-	 static class Initializer
-     implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-       public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-           TestPropertyValues.of(
-             "spring.datasource.url=" + postgresqlContainer.getJdbcUrl(),
-             "spring.datasource.username=" + postgresqlContainer.getUsername(),
-             "spring.datasource.password=" + postgresqlContainer.getPassword()
-           ).applyTo(configurableApplicationContext.getEnvironment());
-       }
-   }
-	 
+
 	 @LocalServerPort
 	 private  int localServerPort;
 	 private TodoTestData testData;
@@ -76,23 +58,16 @@ public class TodoControllerIT {
 	 @Autowired
 	  private WebApplicationContext webApplicationContext;
 	 
-	 @Before
-	 public void before() {
-		 postgresqlContainer.start();
-	    }
-
-	  @After
-	  public void after() {
-	    	postgresqlContainer.stop();
-	    }
+	 @Container
+		public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer();
 
 	       
 	 @Test
 	 public void shouldhaveAContinerRunning() {
-	    assertTrue(postgresqlContainer.isRunning());
+	    assertTrue(postgreSQLContainer.isRunning());
 	 }
 	   
-	 @Ignore
+	
 	 @Test
 	 public void shoulReturnTodos()  {
 	    	  	
@@ -148,8 +123,8 @@ public class TodoControllerIT {
      
      }
      
-     @Ignore
-     @Test
+  
+     @Test 
      public void shouldDeleteTodo() {
     	 
     	 Date date = DateFactory.generetDate("01-01-2020 12:00:00");	

@@ -16,7 +16,8 @@ repositories {
    // maven { url "http://dl.bintray.com/epam/reportportal" }
 }
 
-sourceCompatibility = '14'
+sourceCompatibility = '1.8'
+
 
 sourceSets {
 	intTest {
@@ -39,21 +40,30 @@ dependencies {
 	 implementation 'javax.validation:validation-api:2.0.1.Final'
 	 implementation 'org.springframework.boot:spring-boot-starter-validation'
 	 implementation 'org.modelmapper:modelmapper:2.3.8'
-	 runtimeOnly 'org.postgresql:postgresql:42.2.16'
+	 implementation 'org.postgresql:postgresql:42.2.16'
+	 implementation 'org.springframework.data:spring-data-elasticsearch:4.0.4.RELEASE'
+	 implementation 'co.elastic.apm:apm-agent-attach:1.18.0'
+	 
+	 
+     
 	 
 	 testImplementation 'org.springframework.boot:spring-boot-starter-test' 
      testImplementation 'io.rest-assured:spring-mock-mvc:4.3.1'
 	 testImplementation  'io.rest-assured:rest-assured-common:4.3.1'
-	 testImplementation  'org.springframework.boot:spring-boot-starter-data-jpa'
-	 testCompile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
      testImplementation 'com.epam.reportportal:agent-java-junit5:5.0.0-RC-1'
 	 
 	 intTestImplementation 'org.testcontainers:testcontainers:1.15.0-rc1'
 	 intTestImplementation 'org.testcontainers:postgresql:1.15.0-rc1'
+	 intTestImplementation  'org.testcontainers:junit-jupiter:1.15.0-rc1'
+	 
 	 intTestImplementation 'org.springframework.boot:spring-boot-starter-test'
 	 intTestImplementation 'io.rest-assured:spring-mock-mvc:4.1.2'
 	 intTestImplementation  'io.rest-assured:rest-assured-common:4.3.1'
 	 intTestImplementation 'com.epam.reportportal:agent-java-junit5:5.0.0-RC-1' 
+
+	 
+	 
+	 
 }
 
 test {
