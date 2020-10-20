@@ -35,7 +35,11 @@ public class TodoController {
 	@GetMapping(value= "{user_name}/todos")
 	public List<Todo> getTodos(@PathVariable("user_name") String userName) {
 			
-		return service.getTodos(userName);	
+		List<Todo> result = service.getTodos(userName);	
+		for (Todo todo: result) {
+			logger.info(todo.getName());
+			logger.info(todo.getDescription());
+		}
 	}
 	
 	

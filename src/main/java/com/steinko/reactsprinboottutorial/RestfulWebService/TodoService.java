@@ -35,8 +35,13 @@ public class TodoService  {
 	
 	
 	public List<Todo> getTodos(String name) { 
-	
-		 return repository.findByName(name);	
+	     logger.info(name);
+		 List<Todo> result = repository.findByName(name);
+		 for(Todo todo: result) {
+		      logger.info(todo.getName());
+		      logger.info(todo.getDescription());
+		 }
+		 return result;
 	}
 	
 

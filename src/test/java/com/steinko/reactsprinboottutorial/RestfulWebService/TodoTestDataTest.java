@@ -34,8 +34,8 @@ public class TodoTestDataTest {
 	   Date date = DateFactory.generetDate("01-10-2000");
 		
 	   todos = new ArrayList<Todo>();
-	   todos.add(new Todo("Stein", "Fix mutter", date, false));
-	   todos.add(new Todo("Stein", "Fix kajak", date, false));
+	   todos.add(new Todo("stein", "Fix mutter", date, false));
+	   todos.add(new Todo("stein", "Fix kajak", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	     try {

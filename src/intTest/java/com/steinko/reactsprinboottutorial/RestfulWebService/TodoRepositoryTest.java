@@ -70,6 +70,14 @@ public class TodoRepositoryTest  extends AbstractContainerBaseTest {
 		assertNotNull(repository.findAll());
 	}
 	
+	@Test
+	public void shouldFind() {
+		String name = "Stein";
+		repository.save(new Todo(name));
+		assertNotNull(repository.findByName(name));
+		
+	}
+	
 
 	@Test
 	public void shouldDelete() {

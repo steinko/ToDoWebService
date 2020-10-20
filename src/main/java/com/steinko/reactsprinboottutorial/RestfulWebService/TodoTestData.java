@@ -21,8 +21,8 @@ public class TodoTestData {
 	public TodoTestData ()  {
 		 Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
 	  todos = new ArrayList<Todo>();
-	  todos.add(new Todo( "Stein", "Fix mutter", date, false));
-	  todos.add(new Todo( "Stein", "Fix kajakk", date, false));
+	  todos.add(new Todo( "stein", "Fix mutter", date, false));
+	  todos.add(new Todo( "stein", "Fix kajakk", date, false));
 			  
 	   ObjectMapper objectMapper = new ObjectMapper();
 	   

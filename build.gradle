@@ -24,16 +24,23 @@ sourceSets {
 		compileClasspath += sourceSets.main.output
 		runtimeClasspath += sourceSets.main.output
 	}
+	depTest {
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
 }
 
 configurations {
 	intTestImplementation.extendsFrom implementation
 	intTestCompile.extendsFrom testCompile
 	intTestRuntimeOnly.extendsFrom runtimeOnly
+	depTestImplementation.extendsFrom implementation
+	depTestCompile.extendsFrom testCompile
+	depTestRuntimeOnly.extendsFrom runtimeOnly
 }
 
 dependencies {
-     //implementation 'com.epam.reportportal:logger-java-log4j:5.0.2'
+    
      implementation 'org.springframework.boot:spring-boot-starter-web'
 	 implementation  'org.springframework.boot:spring-boot-starter-data-jpa'
 	 implementation 'org.modelmapper:modelmapper:2.3.8'
@@ -41,11 +48,9 @@ dependencies {
 	 implementation 'org.springframework.boot:spring-boot-starter-validation'
 	 implementation 'org.modelmapper:modelmapper:2.3.8'
 	 implementation 'org.postgresql:postgresql:42.2.16'
-	 implementation 'org.springframework.data:spring-data-elasticsearch:4.0.4.RELEASE'
 	 implementation 'co.elastic.apm:apm-agent-attach:1.18.0'
+	 implementation  'org.elasticsearch.client:x-pack-transport:7.9.2'
 	 
-	 
-     
 	 
 	 testImplementation 'org.springframework.boot:spring-boot-starter-test' 
      testImplementation 'io.rest-assured:spring-mock-mvc:4.3.1'
@@ -61,8 +66,8 @@ dependencies {
 	 intTestImplementation  'io.rest-assured:rest-assured-common:4.3.1'
 	 intTestImplementation 'com.epam.reportportal:agent-java-junit5:5.0.0-RC-1' 
 
-	 
-	 
+
+	 depTestImplementation 'org.springframework.boot:spring-boot-starter-test'
 	 
 }
 
@@ -78,6 +83,17 @@ task integrationTest(type: Test) {
 
 	testClassesDirs = sourceSets.intTest.output.classesDirs
 	classpath = sourceSets.intTest.runtimeClasspath
+	shouldRunAfter test
+	finalizedBy jacocoTestReport
+}
+
+
+task deploymentTest(type: Test) {
+	description = 'Runs deployment tests.'
+	group = 'verification'
+
+	testClassesDirs = sourceSets.depTest.output.classesDirs
+	classpath = sourceSets.depTest.runtimeClasspath
 	shouldRunAfter test
 	finalizedBy jacocoTestReport
 }

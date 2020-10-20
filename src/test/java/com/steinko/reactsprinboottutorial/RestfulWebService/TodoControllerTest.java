@@ -76,7 +76,7 @@ public class TodoControllerTest {
 	    public void shouldDeleteTodo()  {
 		  
 		 
-		  String url = "/user/Stein/todo/1";
+		  String url = "/user/stein/todo/1";
 		  
 		   given().
 		     standaloneSetup(controller)
@@ -92,14 +92,14 @@ public class TodoControllerTest {
 	  void shouldCreateTodo()  {
 		  
 		  Date date = DateFactory.generetDate("01-01-2020 12:00:00");	
-		  Todo todo = new Todo("Stein","Fix kjakk",date,false);
+		  Todo todo = new Todo("stein","Fix kjakk",date,false);
 		         
 		  given().
 		    standaloneSetup(controller).
 		    contentType(JSON).
 		    body(todo).
 	      when().
-	         post("/user/Stein/todo").
+	         post("/user/stein/todo").
 	      then().
 	         log().ifValidationFails().
 	         statusCode(OK.value());
