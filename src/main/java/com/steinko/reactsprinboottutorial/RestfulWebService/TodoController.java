@@ -40,6 +40,7 @@ public class TodoController {
 			logger.info(todo.getName());
 			logger.info(todo.getDescription());
 		}
+		return result;
 	}
 	
 	
