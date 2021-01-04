@@ -15,29 +15,20 @@ import org.slf4j.LoggerFactory;
 
 
 public class TodoTestData {
-	private List<TodoDto> todos;
+	private List<Todo> todos;
 	private String todosjson;
 	private static final Logger logger = LoggerFactory.getLogger(TodoTestData.class);
 	
 	TodoTestData () {
 	
 	   Date date = DateFactory.generetDate("01-01-2020");
-	   todos = new ArrayList<TodoDto>();
-	   todos.add(new TodoDto(0L, "Stein", "Fix mutter", date, false));
-	   todos.add(new TodoDto(1L, "Stein", "Fix kajakk", date, false));
+	   todos = new ArrayList<Todo>();
+	   todos.add(new Todo( "Stein", "Fix mutter", date, false));
+	   todos.add(new Todo( "Stein", "Fix kajakk", date, false));
 			  
-	   ObjectMapper objectMapper = new ObjectMapper();
-	   
-	   try {
-	   
-         todosjson =   objectMapper.writeValueAsString(todos);
-	   } catch (JsonProcessingException ex)
-	   {
-		   logger.info(ex.getMessage());
-	   }
 	  }
 
-	public List<TodoDto> getTodos() {
+	public List<Todo> getTodos() {
 		return todos;
 	}
 

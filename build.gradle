@@ -7,7 +7,7 @@ plugins {
 	  }
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'jacoco'
+
 
 repositories {
     mavenCentral()
@@ -16,7 +16,7 @@ repositories {
    // maven { url "http://dl.bintray.com/epam/reportportal" }
 }
 
-sourceCompatibility = '1.8'
+sourceCompatibility = '15'
 
 
 sourceSets {
@@ -73,7 +73,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
-	finalizedBy jacocoTestReport 
 }
 
 
@@ -84,7 +83,6 @@ task integrationTest(type: Test) {
 	testClassesDirs = sourceSets.intTest.output.classesDirs
 	classpath = sourceSets.intTest.runtimeClasspath
 	shouldRunAfter test
-	finalizedBy jacocoTestReport
 }
 
 
@@ -95,7 +93,6 @@ task deploymentTest(type: Test) {
 	testClassesDirs = sourceSets.depTest.output.classesDirs
 	classpath = sourceSets.depTest.runtimeClasspath
 	shouldRunAfter test
-	finalizedBy jacocoTestReport
 }
 
 
@@ -105,11 +102,5 @@ sonarqube {
         property "sonar.sources", "src/main"
        }
     } 
-	
-jacocoTestReport {
-		reports {
-			xml.enabled true
-		}
-	}
 
 

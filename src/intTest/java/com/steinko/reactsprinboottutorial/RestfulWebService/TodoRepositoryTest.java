@@ -11,9 +11,7 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
+
 
 import org.springframework.boot.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -32,14 +30,12 @@ import static org.hamcrest.CoreMatchers.is;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.testcontainers.containers.PostgreSQLContainer;
 import com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestData;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.util.Date;
+
 import java.util.Iterator;
-import java.util.List;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -47,10 +43,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @ExtendWith(SpringExtension.class)
-@Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
-public class TodoRepositoryTest  extends AbstractContainerBaseTest {
+public class TodoRepositoryTest  {
 	
 		
 	@Autowired

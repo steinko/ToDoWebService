@@ -47,7 +47,7 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 
-public class TodoControllerIT extends AbstractContainerBaseTest{
+public class TodoControllerIT {
 	 private static final Logger logger = LoggerFactory.getLogger(TodoControllerIT.class);
 	 
 
