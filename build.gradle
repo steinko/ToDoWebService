@@ -2,18 +2,12 @@ plugins {
 	          id 'org.springframework.boot' version '2.3.3.RELEASE'
 			  id "io.spring.dependency-management" version "1.0.10.RELEASE"
 			  id "org.sonarqube" version "3.0"
-			  
-                 
+			  id 'java'
+			  id  'eclipse'   
 	  }
-apply plugin: 'java'
-apply plugin: 'eclipse'
-
-
+	  
 repositories {
-    mavenCentral()
     jcenter()
-    mavenLocal()
-   // maven { url "http://dl.bintray.com/epam/reportportal" }
 }
 
 sourceCompatibility = '1.8'
@@ -24,19 +18,14 @@ sourceSets {
 		compileClasspath += sourceSets.main.output
 		runtimeClasspath += sourceSets.main.output
 	}
-	depTest {
-		compileClasspath += sourceSets.main.output
-		runtimeClasspath += sourceSets.main.output
-	}
+	
 }
 
 configurations {
 	intTestImplementation.extendsFrom implementation
 	intTestCompile.extendsFrom testCompile
 	intTestRuntimeOnly.extendsFrom runtimeOnly
-	depTestImplementation.extendsFrom implementation
-	depTestCompile.extendsFrom testCompile
-	depTestRuntimeOnly.extendsFrom runtimeOnly
+	
 }
 
 dependencies {
@@ -65,9 +54,6 @@ dependencies {
 	 intTestImplementation 'io.rest-assured:spring-mock-mvc:4.1.2'
 	 intTestImplementation  'io.rest-assured:rest-assured-common:4.3.1'
 	 intTestImplementation 'com.epam.reportportal:agent-java-junit5:5.0.0-RC-1' 
-
-
-	 depTestImplementation 'org.springframework.boot:spring-boot-starter-test'
 	 
 }
 
@@ -86,15 +72,6 @@ task integrationTest(type: Test) {
 }
 
 
-task deploymentTest(type: Test) {
-	description = 'Runs deployment tests.'
-	group = 'verification'
-
-	testClassesDirs = sourceSets.depTest.output.classesDirs
-	classpath = sourceSets.depTest.runtimeClasspath
-	shouldRunAfter test
-}
-
 
 sonarqube {
     properties {
@@ -102,5 +79,10 @@ sonarqube {
         property "sonar.sources", "src/main"
        }
     } 
+    
+    check.dependsOn integrationTest
+    
+ 
+
 
 
