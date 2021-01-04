@@ -16,7 +16,7 @@ repositories {
    // maven { url "http://dl.bintray.com/epam/reportportal" }
 }
 
-sourceCompatibility = '15'
+sourceCompatibility = '1.8'
 
 
 sourceSets {
