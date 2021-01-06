@@ -11,9 +11,7 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
+
 
 import org.springframework.boot.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -36,14 +34,11 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.junit.ClassRule;
 
-
-import org.testcontainers.containers.PostgreSQLContainer;
 import com.steinko.reactsprinboottutorial.RestfulWebService.TodoTestData;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @ExtendWith(SpringExtension.class)
-@Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 
@@ -57,16 +52,7 @@ public class TodoControllerIT {
 	
 	 @Autowired
 	  private WebApplicationContext webApplicationContext;
-	 
-	 @Container
-		public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer();
-
 	       
-	 @Test
-	 public void shouldhaveAContinerRunning() {
-	    assertTrue(postgreSQLContainer.isRunning());
-	 }
-	   
 	
 	 @Test
 	 public void shoulReturnTodos()  {

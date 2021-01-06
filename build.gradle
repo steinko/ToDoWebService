@@ -37,24 +37,14 @@ dependencies {
 	 implementation 'org.springframework.boot:spring-boot-starter-validation'
 	 implementation 'org.modelmapper:modelmapper:2.3.8'
 	 implementation 'org.postgresql:postgresql:42.2.16'
-	 implementation 'co.elastic.apm:apm-agent-attach:1.18.0'
-	 implementation  'org.elasticsearch.client:x-pack-transport:7.9.2'
-	 
 	 
 	 testImplementation 'org.springframework.boot:spring-boot-starter-test' 
      testImplementation 'io.rest-assured:spring-mock-mvc:4.3.1'
 	 testImplementation  'io.rest-assured:rest-assured-common:4.3.1'
-     testImplementation 'com.epam.reportportal:agent-java-junit5:5.0.0-RC-1'
-	 
-	 intTestImplementation 'org.testcontainers:testcontainers:1.15.0-rc1'
-	 intTestImplementation 'org.testcontainers:postgresql:1.15.0-rc1'
-	 intTestImplementation  'org.testcontainers:junit-jupiter:1.15.0-rc1'
-	 
+     
 	 intTestImplementation 'org.springframework.boot:spring-boot-starter-test'
 	 intTestImplementation 'io.rest-assured:spring-mock-mvc:4.1.2'
 	 intTestImplementation  'io.rest-assured:rest-assured-common:4.3.1'
-	 intTestImplementation 'com.epam.reportportal:agent-java-junit5:5.0.0-RC-1' 
-	 
 }
 
 test {
