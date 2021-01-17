@@ -10,7 +10,7 @@ repositories {
     jcenter()
 }
 
-sourceCompatibility = '1.8'
+sourceCompatibility = '14'
 
 
 sourceSets {
