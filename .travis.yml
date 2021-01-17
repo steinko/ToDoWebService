@@ -1,4 +1,5 @@
 language: java
+jdk: openjdk14
 services: docker
 addons:
   sonarcloud:
