@@ -8,6 +8,7 @@ addons:
       secure: en4SVMRqVF9wVwuruB2m4Ozi5EBLu66xkuqSe/4SCMtDCMnbscqdFZUYFEL3SEBXFfK9ALNBhrvk9YRrG8MUNAjxBrdxXESalFLQy8EVlMA0q24Ug47ccNVyh+WR0JPTIefE4OpdDePGpBx+WVU9Z9QWAGeeTfqqOyKvULSWfUqczhn2SjnYQIB24+QkJCDmOc/cRJy17BHApnJx/YBGTe8+HDPLPEijC1w1TvzfJEn1LvTOBw9VkKW1Tkc3DtnA+WLqZqv4rnco/6dhpVJgVyccr3aGNSvLXIQ+5V77RlzT7D+A1tfD/4kWzFA3TRtofg7NSc/h4FoLwlNY7DnQIz6PIl9oQ4U37GJjOrBnJkqAzIlFs3sVZQrBTIA4PnceJq75++sr6fARAF74UfLxOzC7DVfFj/80DDUxNNTBXhZJcVfJTZXudHphiPR9kMSU9Punoc8KDYqlpuwnL/Yo/MKc91mnYCNuSKs9zHQfl8KOSnJq4vIVqOpiufdoLvQS3dt1DtHhKr1KZsD9tnte3snveTO+9vEH6u/QjE/qa/5AN9P1ImOs9YtoBSSIUWuv3+ncgA7UZur0z2nUwmYGCv1Zm5UpaW0NXEBtFaWQ1rIyvSckBr1n2w5nGXBP3T5QS9+wsUG7hBUN3b2UoFdlaFPmlo+1BMKl0R++jhOXz4s=
 script:
   - ./gradlew build
-  - docker build -t steinko/todobackend:0.2 .
+  - ./gradlew sonarqube
+  - docker build -t steinko/todobackend:0.3 .
   - docker login --username steinko --password RoxyMusic11
-  - docker push steinko/todobackend:0.2
+  - docker push steinko/todobackend:0.3
