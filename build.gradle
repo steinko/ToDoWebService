@@ -6,7 +6,7 @@ plugins {
 			  id 'java'
 			  id  'eclipse' 
 			  id 'jacoco' 
-			  id 'checkstyle' 
+			//  id 'checkstyle' 
 	  }
 	  
 repositories {
@@ -88,9 +88,9 @@ sonarqube {
     }
   } 
   
-  tasks.withType(Checkstyle) {
-    reports {
-        xml.enabled false
-        html.enabled true
-    }
-}  
+  //tasks.withType(Checkstyle) {
+  //  reports {
+ //       xml.enabled false
+ //       html.enabled true
+ //   }
+//}  
