@@ -51,10 +51,12 @@ public class TodoService  {
 	}
 
 
-	public void createTodo(Todo todo) {
+	public Long createTodo(Todo todo) {
 		
 		validateEntity(todo);
 		repository.save(todo);
+		return todo.getId();
+		
 	}
 	
 	

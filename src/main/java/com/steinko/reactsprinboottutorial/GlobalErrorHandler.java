@@ -1,4 +1,4 @@
-package com.steinko.reactsprinboottutorial.RestfulWebService;
+package com.steinko.reactsprinboottutorial;
 
 import java.util.List;
 import java.util.ArrayList;

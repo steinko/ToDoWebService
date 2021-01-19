@@ -16,8 +16,9 @@ import java.util.Date;
 @Table(name = "todo")
 public class Todo implements Serializable  {
 	private static final long serialVersionUID = -2343243243242432341L;
+	
 	/**
-	 * Id for a bank.
+	 * Id for a todo.
 	 */
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,31 +26,23 @@ public class Todo implements Serializable  {
 	
 	
 	@Column(name = "name")
-	private String name;
-	
+	private String name;	
 	private String description;
-	
 	private Date targetDate;
-	
 	private Boolean isDone;
 	
 	protected Todo() {
 		
 	}
 	
-	
-	
 	/**
-	    * Get the id of the bank.
-	    * @return id for the bank
+	    * Get the id of the todo.
+	    * @return id for the todo
 	    */
 	public Long getId() {
 	   		return id;
 	    }
 	
-	public Todo(String name) {
-		this.name = name;
-	}
 	
 	public Todo(String name, String description, Date targetDate, boolean isDone) {
 		this.name = name;
@@ -68,18 +61,15 @@ public class Todo implements Serializable  {
 		return this.name;
 	}
 
-
-
+	
 	public String getDescription() {
 		return this.description;
 	}
 
-
-
+	
 	public Date getTargetDate() {
 		return this.targetDate;
 	}
-
 
 
 	public Boolean getIsDone() {
@@ -93,17 +83,14 @@ public class Todo implements Serializable  {
 	}
 
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 
-
 	public void setTargetDate(Date targetDate) {
 		this.targetDate = targetDate;
 	}
-
 
 
 	public void setIsDone(Boolean isDone) {

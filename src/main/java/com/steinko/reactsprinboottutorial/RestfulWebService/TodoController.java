@@ -53,9 +53,9 @@ public class TodoController {
 	
 	
 	@PostMapping(value = "{user_name}/todo")
-	public void createTodo(@PathVariable("user_name") String userName,@RequestBody Todo todo){
+	public Long createTodo(@PathVariable("user_name") String userName,@RequestBody Todo todo){
 		
-		service.createTodo(todo);
+		return service.createTodo(todo);
 	}
 			               
 }

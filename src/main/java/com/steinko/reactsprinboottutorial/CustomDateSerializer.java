@@ -1,4 +1,4 @@
-package com.steinko.reactsprinboottutorial.RestfulWebService;
+package com.steinko.reactsprinboottutorial;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import java.io.IOException;
