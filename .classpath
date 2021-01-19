@@ -20,6 +20,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src/depTest/java"/>
+	<classpathentry kind="src" path="src/intTest/resourses"/>
+	<classpathentry kind="src" path="src/iTest/java"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="src" output="bin/intTest" path="src/intTest/java">
 		<attributes>

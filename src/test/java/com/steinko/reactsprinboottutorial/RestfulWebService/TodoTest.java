@@ -10,14 +10,14 @@ public class TodoTest {
 	
 	@Test
 	void shouldExcists() { 
-		Todo todo = new Todo("Steing Korsveien");
+		Todo todo = new Todo("", null, null, false);
 		assertNotNull(todo);
 	}
 	
 	@Test 
 	void shouldGetAUserName() { 
 		String name  = "Stein Korsveien";
-		Todo todo = new Todo(name);
+		Todo todo = new Todo(name,null,null,false);
 		assertEquals(todo.getName(),name);
 	}
 	

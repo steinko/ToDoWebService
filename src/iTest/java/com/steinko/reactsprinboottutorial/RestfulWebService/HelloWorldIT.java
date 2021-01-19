@@ -15,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(HelloWorldController.class)
-public class HelloWorldAPITest {
+public class HelloWorldIT {
 	
 	@Autowired
     private MockMvc mvc;

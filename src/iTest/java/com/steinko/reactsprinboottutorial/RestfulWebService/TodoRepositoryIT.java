@@ -45,7 +45,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
-public class TodoRepositoryTest  {
+public class TodoRepositoryIT  {
 	
 		
 	@Autowired
@@ -58,17 +58,18 @@ public class TodoRepositoryTest  {
 	}
 	
 	
-
 	@Test
 	public void shouldSave() {
-		repository.save(new Todo("Stein"));
+		
+		repository.save(new Todo("Stein", null, null, false));
 		assertNotNull(repository.findAll());
 	}
 	
 	@Test
 	public void shouldFind() {
+		
 		String name = "Stein";
-		repository.save(new Todo(name));
+		repository.save(new Todo(name, name, null, false));
 		assertNotNull(repository.findByName(name));
 		
 	}
@@ -76,15 +77,13 @@ public class TodoRepositoryTest  {
 
 	@Test
 	public void shouldDelete() {
-		repository.save(new Todo("Stein"));
+		
+		repository.save(new Todo("Stein", null, null, false));
 		Iterable<Todo> todos = repository.findAll();
 		Iterator<Todo> iterator = todos.iterator();
 		Todo todo = iterator.next();
-		Long id = todo.getId();
-		repository.deleteById(id);
-		List<Todo> list = new ArrayList<Todo>();
-		Iterable<Todo> expected = list;
-		assertEquals(repository.findAll(), expected);
+		repository.delete(todo);
+		assertEquals(repository.count(), 0L);
 	}
 
 }
