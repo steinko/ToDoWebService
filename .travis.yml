@@ -9,6 +9,6 @@ addons:
 script:
   - ./gradlew build
   - ./gradlew sonarqube
-  - docker build -t steinko/todobackend:0.3 .
+  - docker build -t steinko/todobackend:0.4 .
   - docker login --username steinko --password RoxyMusic11
-  - docker push steinko/todobackend:0.3
+  - docker push steinko/todobackend:0.4

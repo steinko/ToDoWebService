@@ -5,7 +5,8 @@ plugins {
 			  id "org.sonarqube" version "3.0"
 			  id 'java'
 			  id  'eclipse' 
-			  id 'jacoco'  
+			  id 'jacoco' 
+			  id 'checkstyle' 
 	  }
 	  
 repositories {
@@ -85,4 +86,11 @@ sonarqube {
         property "sonar.organization" , "steinko-github"
         property "sonar.projectKey", "todobackend"
     }
-  }   
+  } 
+  
+  tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}  
