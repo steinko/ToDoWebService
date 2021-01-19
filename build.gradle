@@ -93,4 +93,9 @@ sonarqube {
  //       xml.enabled false
  //       html.enabled true
  //   }
-//}  
+//}
+
+
+bootRun {
+  args = ["--spring.profiles.active=test"]
+}  
